@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import { productos } from '../../data/productos';
+import { productos } from '../../../data/productos.js';
 
 const celulares = productos.filter(p => p.categoria === 'celular');
 ---
