@@ -1,0 +1,58 @@
+---
+interface Props {
+  id: string;
+  nombre: string;
+  precio: number;
+  imagen: string;
+  descripcion: string;
+}
+
+const { id, nombre, precio, imagen, descripcion } = Astro.props;
+---
+
+<article class="product-card">
+  <img src={imagen} alt={nombre} />
+  <div class="product-info">
+    <h3>{nombre}</h3>
+    <p>{descripcion}</p>
+    <p class="price">${precio}</p>
+    <button class="btn" data-product-id={id}>
+      Agregar al carrito
+    </button>
+  </div>
+</article>
+
+<style>
+  .product-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 1rem;
+  }
+
+  .product-info h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0;
+  }
+</style>

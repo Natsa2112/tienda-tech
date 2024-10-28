@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { productos } from '../../data/productos';
+
+const celulares = productos.filter(p => p.categoria === 'celular');
+---
+
+<Layout title="Celulares">
+  <h1>Celulares</h1>
+  <div class="productos-grid">
+    {celulares.map(producto => (
+      <ProductCard {...producto} />
+    ))}
+  </div>
+</Layout>
+
+<style>
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .productos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
